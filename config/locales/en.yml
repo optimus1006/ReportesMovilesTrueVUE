@@ -1,0 +1,28 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  and: "and"
+  date:    
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%A, %B %d, %Y'
+      short: ! '%B %d'
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d, %b, %Y at %H:%M:%S %Z'
+      long: ! '%A, %B %d, %Y at %I:%M %p'
+      short: ! ' %b %d at %H:%M hrs'
+    pm: pm 
+  distance:
+    centi:
+      one: "cm"
+      other: "cms" 
+    unit:
+      one: "mt"
+      other: "mts"
+    thousand:
+      one: "km"
+      other: "kms"

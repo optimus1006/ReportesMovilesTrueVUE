@@ -1,0 +1,31 @@
+<% content_for :title do %>
+  <%= I18n.t('title') %>
+<% end %>
+<div class="login_div row">
+  <%= raw alert(@error) %>
+ <%= form_tag(login_users_path, :method => "post", :id => "login_form", :class => "") do %>
+    <fieldset>
+      <legend>Login</legend>
+      <div class="row">
+        <h5 class="subheader"><%= I18n.t('user.text_login') %></h5>
+      </div>
+      <div class="row">       
+        <div class="large-3 user">
+          <%= label_tag(:user, I18n.t('user.login.label')) %>
+          <%= text_field_tag(:user, nil, :placeholder => I18n.t('user.login.placeholder'), :class => "large-3", :autocomplete => "off", :required => true) %>
+        </div>
+      </div>
+      <div class="row"> 
+        <div class="large-3 password">
+          <%= label_tag(:password, I18n.t('user.password.label')) %>
+          <%= password_field_tag(:password, nil, :placeholder => I18n.t('user.password.placeholder'), :class => "large-3", :autocomplete => "off", :required => true) %>
+        </div>
+      </div>
+      <div class="row">       
+        <div class="large-3 actions">
+          <%= submit_tag(I18n.t('user.login_btn'), :id => "btn_login", :class => "button small radius", :data => {:loading_text => I18n.t('user.login_loading')}) %>   
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

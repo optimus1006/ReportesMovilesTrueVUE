@@ -1,0 +1,61 @@
+<% content_for :title do %>
+  <%= I18n.t('title') %>
+<% end %>
+<% content_for :header do %>
+  <%= javascript_include_tag "reports/stores" %>
+<% end %>
+
+
+ <%= form_tag(report1_reports_path, :method => "get", :id => "filter_form", :class => "", "data-stores" => @stores.to_json) do %>
+    <div class="row">
+      <div class="small-12 large-8 columns">
+        <h5 class="subheader"><%= I18n.t('reports.filter_text') %></h5>
+      <div>
+    </div>
+    <div class="row panel">
+      <fieldset>
+        <legend><%= I18n.t('reports.date_selection') %></legend>
+        <div class="row datepicker_type">
+          <div class="large-4 columns">
+            <%= label_tag(:date, t('reports.date')) %>
+            <%= text_field_tag(:date, (Date.today - 1.day).strftime('%Y-%m-%d'), :autocomplete => "off", :required => true, "data-time" => "date_time") %>  
+            <%= text_field_tag(:date_time, "00:00:00", :class => "date", :autocomplete => "off", :required => true, :readonly => true) %>
+          </div>
+          <div class="large-4 columns">
+            <%= label_tag(:date_end, t('reports.date_end')) %>
+            <%= text_field_tag(:date_end, (Date.today).strftime('%Y-%m-%d'), :autocomplete => "off", :required => true, "data-time" => "date_end_time") %>
+            <%= text_field_tag(:date_end_time, "23:55:55", :class => "date", :autocomplete => "off", :required => true, :readonly => true) %> 
+          </div>
+        </div>
+        <div class="row date_type">
+          <div class="large-4 columns">
+            <%= label_tag(:date, t('reports.date')) %>
+            <%= text_field_tag(:date, (Date.today - 1.day).strftime('%Y-%m-%d'), :class => "date", :autocomplete => "off", :required => true, :type => "date") %> 
+            <%= text_field_tag(:date_time, "00:00:00", :class => "date", :autocomplete => "off", :required => true, :type => "time") %>  
+          </div>
+          <div class="large-4 columns">
+            <%= label_tag(:date_end, t('reports.date_end')) %>
+            <%= text_field_tag(:date_end, (Date.today).strftime('%Y-%m-%d'), :class => "date", :autocomplete => "off", :required => true, :type => "date") %>
+            <%= text_field_tag(:date_end_time, "23:59:59", :class => "date", :autocomplete => "off", :required => true, :type => "time") %>  
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="row panel">
+      <fieldset>
+        <legend><%= I18n.t('reports.report_selection') %></legend>
+        <div id="tree"> </div>
+        <%= hidden_field_tag :stores , nil %>
+      </fieldset>
+    </div>
+    <div class="row actions"> 
+      <div class="small-6 large-centered columns">
+        <div class="small-3 columns">
+          <%= submit_tag(I18n.t('reports.send_btn'), :id => "btn_send", :class => "button small radius", :data => {:loading_text => I18n.t('user.login_loading')}) %>   
+        </div>     
+        <div class="small-3 columns">
+          <%= link_to I18n.t('reports.cancel_btn'), reports_path,:class => "button small radius secondary", :data => {:loading_text => I18n.t('user.login_loading')} %>   
+        </div>
+      </div>      
+    </div>
+  <% end %>

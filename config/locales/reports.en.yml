@@ -1,0 +1,33 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  title: "Reportes Moviles TrueVUE"
+  header_title: "<span class='true'>TrueVUE</span><br/><span class='report'>Reportes Moviles</span>"
+  logout: "Salir"
+  back: "Atras"
+  user:
+    text_login: "Por favor ingrese los datos de usuario y contraseña:"
+    login:
+      label: "Usuario"
+      placeholder: "Usuario para ingresar"
+    password:
+      label: "Contraseña"
+      placeholder: "Contraseña de ingreso"
+    login_btn: "Ingresar"
+    login_loading: "Ingresando"
+  reports:
+    text: "Seleccione el reporte que desea generar:"
+    filter_text: "Seleccione los filtros del reporte"
+    date: "Fecha"
+    date_end: "Fecha final"
+    send_btn: "Enviar"    
+    cancel_btn: "Cancelar"
+    date_selection: "Selección de Fechas"
+    report_selection: "Selección de Reportes"
+    no_results: "No se presentaron resultados para la búsqueda."
+    report1:
+      title: "Tasa de conversión por tienda"
+      thead: "Parent,Site,Day,Date,Transaction Count,Sales Total,Item Count,People Count,Sales Convertion(%),Average Sale,Average Units"
+  errors:
+    login: "Su usuario o contraseña esta errado"

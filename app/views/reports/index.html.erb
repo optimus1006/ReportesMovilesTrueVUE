@@ -1,0 +1,20 @@
+<% content_for :title do %>
+  <%= I18n.t('title') %>
+<% end %>
+<div class="reports row">
+  <div class="row">
+    <div class="small-12 large-8 columns">
+      <h5 class="subheader"><%= I18n.t('reports.text') %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-8 columns">
+      <a class="th radius" href="<%= stores_reports_path %>">
+        <img src="/assets/icon_report.png">
+        <p>
+          <%= I18n.t('reports.report1.title') %>
+        </p>
+      </a>
+    </div>
+  </div>
+</div>

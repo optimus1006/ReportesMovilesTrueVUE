@@ -1,0 +1,47 @@
+// Place all the styles related to the reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reports {
+	margin: 2em auto;	
+	div .columns {
+		text-align: center;
+		a {
+			text-decoration: none;
+			color: #515251;
+			background: url(/assets/bg_reports.png) repeat 0 0;			
+		}
+	}	
+}
+
+#filter_form {
+	fieldset {
+		legend {
+			background: transparent;
+		}	
+	} 
+	.row {
+		margin: 1em auto;
+	}
+	.datepicker_type div {
+		width: 80%;
+		float:left;
+	}
+}
+
+.datetimepicker-hour, .datetimepicker-minuts, .datetimepicker-second {
+	width: 20%;
+	font-size: 1em;
+}
+
+.table_result {
+	margin-top: 1em;
+	.table {
+		overflow-x: auto;
+	}
+}
+
+.back {
+	float:right;
+	margin-right: 1em;
+}

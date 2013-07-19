@@ -1,0 +1,31 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header.row {
+	border-bottom: 10px #CE3031 solid;
+	height: 4em;
+	font-size: 0.9em;
+	line-height: 1em;
+	.logo_title {
+		padding-top: 0.6em;
+		.true {
+			color: #CE3031;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.report {
+			color: #515251;
+			font-weight: bold;
+			text-decoration: none;
+			font-size: 0.7em;
+		}
+	}
+	.logout {
+		padding-top: 0.8em;
+		text-align: center;
+	}
+	.tyco {
+		padding-top: 1em;
+	}
+}
