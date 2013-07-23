@@ -70,4 +70,7 @@ ReportesMovilesTrueVUE::Application.configure do
   config.dbpassword = 'TrueVUE_SA'
   config.dbdataserver = 'localhost\MSSQLSERVER'
   config.dbname = 'VUE_DM'
+
+  config.assets.precompile += %w( reports/stores.js reports/reports.js reports.css home.css users.css )
+
 end

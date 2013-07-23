@@ -18,5 +18,6 @@
 //= require lib/modernizr/modernizr
 // require lib/modernizr/polyfiller
 //= require lib/DateTimePicker/DateTimePicker
+//= require mobile_reports
 
 $(function(){ $(document).foundation(); });
