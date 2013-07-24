@@ -29,6 +29,7 @@ module ReportsHelper
 				      	value = number_to_currency(value.to_f, precision: 2) unless value == "0.0"
 				    elsif column.include? "AVERAGE"
 				      	value = row[column.to_s]
+				      	value = number_with_precision(value.to_f, precision: 2) unless value.nil?
 				    elsif column.include? "DATE"
 						value = row[column.to_s].strftime('%d/%m/%Y')
 					else	
