@@ -8,12 +8,36 @@ module ReportsHelper
 		header
 	end
 
-	def tbody(rows)
-		rows_header = ""
-		rows.each do |key, value|
-			rows_header += "<tr><td>" + head.to_s + "</td>" 
+	def tbody(rows, colums)
+		rows_body = ""
+		if rows.length < 1      
+        	rows_body += "<tr>"	
+          	rows_body += "<td colspan='" + colums.length.to_s + "'>" + I18n.t('reports.no_results') + "</td>"
+        	rows_body += "</tr>"
+       	else
+			rows.each do |row|
+				rows_body += "<tr>" 
+				colums.each do |column|
+					value = ""
+					if column.include? "AVERAGE"
+				      	value = row[column.to_s]
+				    elsif column.include? "COUNT"	
+				      	value = replace_nil(row[column.to_s], "0")
+				    elsif column.include? "RATE"
+				      	value = replace_nil(row[column.to_s], "0.0")
+				    elsif column.include? "SALES"
+				      	value = replace_nil(row[column.to_s], "0.0")
+				    elsif column.include? "DATE"
+						value = row[column.to_s].strftime('%d/%m/%Y')
+					else	
+						value = row[column.to_s]				    
+				    end
+					rows_body += "<td>" + value.to_s + "</td>"
+				end
+				rows_body += "</tr>" 
+			end
 		end
-		rows_header
+		rows_body
 	end
 
 	def pagination(current, total)
@@ -47,6 +71,9 @@ module ReportsHelper
 	end
 
 	def replace_nil(value, replace)
-		value.presence || replace
+		if value.nil? || value.to_s.empty?
+			return replace
+		end
+		value
 	end
 end

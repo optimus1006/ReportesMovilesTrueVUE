@@ -6,27 +6,7 @@
       </tr>
     </thead>
     <tbody>
-
-      <% if rows.length < 1 %>      
-        <tr>
-          <td colspan='<%= thead.length.to_s %>'><%= I18n.t('reports.no_results') %></td>
-        </tr> 
-      <% end %>
-      <% rows.each do |row| %>
-        <tr>
-          <td><%= row['PARENTHIERARCHYNAME'].to_s %></td>
-          <td><%= row['HIERARCHYNAME'].to_s %></td>
-          <td><%= row['HIERARCHYDATADAY'].to_s %></td>
-          <td><%= row['HIERARCHYDATADATE'].strftime('%d/%m/%Y') %></td>
-          <td><%= replace_nil(row['HIERARCHYTRANSACTIONHOURCOUNT'], "0").to_s %></td>
-          <td><%= replace_nil(row['HIERARCHYSALESHOURTOTAL'], "0.0").to_s %></td>
-          <td><%= replace_nil(row['HIERARCHYITEMHOURCOUNT'], "0").to_s %></td>
-          <td><%= replace_nil(row['HIERARCHYPEOPLEHOURCOUNT'], "0").to_s %></td>
-          <td><%= replace_nil(row['HIERARCHYCONVERSIONHOURRATE'], "0.0").to_s %></td>
-          <td><%= row['HIERARCHYAVERAGEHOURSALES'].to_s %></td>
-          <td><%= row['HIERARCHYAVERAGEHOURUNITS'].to_s %></td>
-        </tr>    
-      <% end %>
+        <%= raw tbody(rows, colums) %>
     </tbody>
   </table>
 </div>

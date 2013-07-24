@@ -28,6 +28,6 @@ en:
     no_results: "No se presentaron resultados para la búsqueda."
     report1:
       title: "Tasa de conversión por tienda"
-      thead: "Parent,Site,Day,Date,Transaction Count,Sales Total,Item Count,People Count,Sales Convertion(%),Average Sale,Average Units"
+      thead: "Parent,Site,Date,Day,Transaction Count,Sales Total,Item Count,People Count,Sales Convertion(%),Average Sale,Average Units"
   errors:
     login: "Su usuario o contraseña esta errado"

@@ -12,7 +12,7 @@
   <%= link_to I18n.t('back'), stores_reports_path, :class => "small button back secondary round" %>
 </div>
 <div class="table_result row" data-stores="<%= @stores %>"  data-date="<%= @date %>"   data-date_end="<%= @date_end %>">
-  <%= render "reports/table", :rows => @rows, :thead => @thead, :total => @total, :current => @current %>
+  <%= render "reports/table", :rows => @rows, :thead => @thead, :total => @total, :current => @current, :colums => @colums %>
 </div>
 
 

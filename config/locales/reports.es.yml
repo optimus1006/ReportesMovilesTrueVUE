@@ -25,6 +25,6 @@ es:
     no_results: "No se presentaron resultados para la búsqueda."
     report1:
       title: "Tasa de conversión por tienda"
-      thead: "Padre,Sitio,Día,Fecha,Cuenta Transacción,Total Ventas,Cuenta Articulos,Cuenta Personas,Conversión de Ventas(%),Promedio de Ventas,Promedio Unidades"
+      thead: "Padre,Sitio,Fecha,Día,Cuenta Transacción,Total Ventas,Cuenta Articulos,Cuenta Personas,Conversión de Ventas(%),Promedio de Ventas,Promedio Unidades"
   errors:
     login: "Su usuario o contraseña esta errado"
