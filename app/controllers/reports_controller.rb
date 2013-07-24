@@ -50,7 +50,7 @@ class ReportsController < ApplicationController
       query_report1 = QUERIES['report1'].gsub("%_DATE_%", @date).gsub("%_DATE_END_%", @date_end).gsub("%_STORES_%", @stores)
       query = QUERIES['query'].gsub("%_QUERY_%", query_report1).gsub("%_COLUMS_%", QUERIES['report1_colums']) + QUERIES['report1_order_by'].gsub("%_COLUMS_%", QUERIES['report1_colums'])
       result = client.execute(query)  
-      logger.info "QUERY " + query.to_s
+      #logger.info "QUERY " + query.to_s
       i = 0
       result.each do |rowset|
         @rows.push(rowset) if i < QUERIES['rows'].to_i
@@ -60,7 +60,7 @@ class ReportsController < ApplicationController
 
       @colums = QUERIES['report1_colums'].split(",")
       @total = (i /  QUERIES['rows'].to_f).ceil
-      logger.info @colums.inspect
+      #logger.info @colums.inspect
     rescue Exception => e
       logger.info "Error en report1 " + e.message
       logger.error $!.backtrace 
@@ -87,7 +87,7 @@ class ReportsController < ApplicationController
       query_group = QUERIES['query'].gsub("%_QUERY_%", query_report).gsub("%_COLUMS_%", colums)
       query = QUERIES['pagination'].gsub("%_QUERY_%", query_group).gsub("%_startRow_%", start_row.to_s).gsub("%_endRow_%", end_row.to_s).gsub("%_DATE_%", date).gsub("%_DATE_END_%", date_end).gsub("%_STORES_%", stores) + QUERIES[ params[:report] + '_order_by'].gsub("%_COLUMS_%", colums)
       result = client.execute(query)      
-      logger.info "QUERY " + query.to_s
+      #logger.info "QUERY " + query.to_s
       result.each do |rowset|
         @rows.push(rowset)
       end

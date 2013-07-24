@@ -21,12 +21,15 @@ module ReportsHelper
 					value = ""
 					if column.include? "AVERAGE"
 				      	value = row[column.to_s]
+				      	value = number_to_percentage(value.to_f, precision: 2) unless value.nil?
 				    elsif column.include? "COUNT"	
 				      	value = replace_nil(row[column.to_s], "0")
 				    elsif column.include? "RATE"
 				      	value = replace_nil(row[column.to_s], "0.0")
+				      	value = number_to_percentage(value.to_f, precision: 2) unless value == "0.0"
 				    elsif column.include? "SALES"
 				      	value = replace_nil(row[column.to_s], "0.0")
+				      	value = number_to_currency(value.to_f, precision: 2) unless value == "0.0"
 				    elsif column.include? "DATE"
 						value = row[column.to_s].strftime('%d/%m/%Y')
 					else	
