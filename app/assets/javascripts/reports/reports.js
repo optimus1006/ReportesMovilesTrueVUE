@@ -42,11 +42,12 @@ Reports.ReportsController.prototype.on_paginate = function(e) {
         url: Reports.REPORTS_URL + "report_query",
         data: {
         	page: page,
+        	rows: JSON.stringify(Reports.reports.table_rows[page]), 
         	total: Reports.reports.total, 
         	report: Reports.reports.report
         },
         dataType: 'html',
-        type: 'get'
+        type: 'post'
       })
       .done(function(data) {
         Reports.reports.cache[page] = data;

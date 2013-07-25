@@ -11,7 +11,7 @@
 <div class="row">
   <%= link_to I18n.t('back'), stores_reports_path, :class => "small button back secondary round" %>
 </div>
-<div class="table_result row">
+<div class="table_result row" data-rows="<%= @rows.to_json %>">
   <%= render "reports/table", :rows => @rows[@current], :thead => @thead, :total => @total, :current => @current, :colums => @colums %>
 </div>
 

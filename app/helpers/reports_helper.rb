@@ -18,24 +18,7 @@ module ReportsHelper
 			rows.each do |row|
 				rows_body += "<tr>" 
 				colums.each do |column|
-					value = ""
-					if column.include? "COUNT"	
-				      	value = replace_nil(row[column.to_s], "0")
-				    elsif column.include? "RATE"
-				      	value = replace_nil(row[column.to_s], "0.0")
-				      	value = number_to_percentage(value.to_f, precision: 2) unless value == "0.0"
-				    elsif column.include? "SALES"
-				      	value = replace_nil(row[column.to_s], "0.0")
-				      	value = number_to_currency(value.to_f, precision: 2) unless value == "0.0"
-				    elsif column.include? "AVERAGE"
-				      	value = row[column.to_s]
-				      	value = number_with_precision(value.to_f, precision: 2) unless value.nil?
-				    elsif column.include? "DATE"
-						value = row[column.to_s].strftime('%d/%m/%Y')
-					else	
-						value = row[column.to_s]				    
-				    end
-					rows_body += "<td>" + value.to_s + "</td>"
+					rows_body += "<td>" + row[column.to_s].to_s + "</td>"
 				end
 				rows_body += "</tr>" 
 			end
@@ -71,12 +54,5 @@ module ReportsHelper
 			pagination += "<li class='arrow right_pagination " + unavailable + "'><a href=''>&raquo;</a></li>"
 		end
 		pagination
-	end
-
-	def replace_nil(value, replace)
-		if value.nil? || value.to_s.empty?
-			return replace
-		end
-		value
 	end
 end

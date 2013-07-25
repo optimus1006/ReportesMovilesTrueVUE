@@ -69,6 +69,6 @@ ReportesMovilesTrueVUE::Application.routes.draw do
     get 'stores', :on => :collection
     post 'report1', :on => :collection
     get 'report1', :on => :collection
-    get 'report_query', :on => :collection
+    post 'report_query', :on => :collection
   end
 end
