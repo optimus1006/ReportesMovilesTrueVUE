@@ -59,7 +59,7 @@ class ReportsController < ApplicationController
       page = 1
       @rows[page] = []
       result.each do |rowset|
-        logger.info "TEMP " + temp[rowset["HIERARCHYNAME"].to_s + rowset["HIERARCHYDATADATE"].to_s].to_s
+        #logger.info "TEMP " + temp[rowset["HIERARCHYNAME"].to_s + rowset["HIERARCHYDATADATE"].to_s].to_s
         if temp[rowset["HIERARCHYNAME"].to_s + rowset["HIERARCHYDATADATE"].to_s].nil?
           temp[rowset["HIERARCHYNAME"].to_s + rowset["HIERARCHYDATADATE"].to_s] = 1
           if i == (QUERIES['rows'].to_i * page)
@@ -68,7 +68,7 @@ class ReportsController < ApplicationController
           end
           @rows[page].push(rowset)
         else
-          @rows[page].shift
+          @rows[page].pop
           @rows[page].push(rowset)
           i -= 1
         end
