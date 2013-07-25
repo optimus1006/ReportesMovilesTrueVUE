@@ -4,4 +4,4 @@ report1_colums: "PARENTHIERARCHYNAME,HIERARCHYNAME,HIERARCHYDATADATE,HIERARCHYDA
 report1_order_by: "order by %_COLUMS_% "
 query: "SELECT  ROW_NUMBER() OVER (ORDER BY PARENTHIERARCHYNAME) AS RowNum, %_COLUMS_% FROM (%_QUERY_%) AS DerivedTableQuery GROUP BY %_COLUMS_% "
 pagination: "SELECT * FROM (%_QUERY_%) AS DerivedTablePagination WHERE DerivedTablePagination.RowNum BETWEEN %_startRow_% AND %_endRow_% "
-rows: 10
+rows: 2

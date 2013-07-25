@@ -5,6 +5,7 @@
 Reports.ReportsController = function() { 
 	this.cache = {};
 	this.report = null;
+	this.table_rows = null;
 	this.total = null;
 };
 
@@ -15,7 +16,8 @@ Reports.ReportsController.prototype.init = function() {
 	$(document.body).on('click', '.pagination a', this.on_paginate);
 	this.report = $("#report").data("report");
 	this.total = $("#report").data("total");
-	Reports.reports.cache["1"] = $(".table_result").eq(0).html();	
+	Reports.reports.cache["1"] = $(".table_result").eq(0).html();
+	this.table_rows = $(".table_result").data("rows");	
 }
 
 /**
@@ -39,12 +41,9 @@ Reports.ReportsController.prototype.on_paginate = function(e) {
 		$.ajax({
         url: Reports.REPORTS_URL + "report_query",
         data: {
-        	page: page, 
+        	page: page,
         	total: Reports.reports.total, 
-        	report: Reports.reports.report, 
-        	date: $(".table_result").eq(0).data("date"), 
-        	date_end: $(".table_result").eq(0).data("date_end"), 
-        	stores: $(".table_result").eq(0).data("stores")
+        	report: Reports.reports.report
         },
         dataType: 'html',
         type: 'get'
