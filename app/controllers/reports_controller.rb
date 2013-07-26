@@ -1,3 +1,5 @@
+include ActionView::Helpers::NumberHelper
+include ActionView::Helpers::DateHelper
 
 class ReportsController < ApplicationController
   before_filter :verify_authentication
