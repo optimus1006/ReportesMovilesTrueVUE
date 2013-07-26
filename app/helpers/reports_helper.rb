@@ -37,7 +37,7 @@ module ReportsHelper
 		else 
 			start = current - ((current % 4) - 1)
 		end
-		if total > start
+		if total >= start
 			unavailable = current == 1 ? "unavailable" : ""
 			pagination += "<li class='arrow left_pagination " + unavailable + "'><a href=''>&laquo;</a></li>"
 			(start.to_i..total).each do |pag|
