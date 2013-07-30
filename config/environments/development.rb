@@ -43,4 +43,7 @@ ReportesMovilesTrueVUE::Application.configure do
   config.dbdataserver = 'localhost\MSSQLSERVER'
   config.dbname = 'VUE_DM'
 
+  #Language
+  config.i18n.default_locale = :es
+  config.i18n.locale = :es
 end

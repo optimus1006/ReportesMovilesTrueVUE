@@ -72,5 +72,9 @@ ReportesMovilesTrueVUE::Application.configure do
   config.dbname = 'VUE_DM'
 
   config.assets.precompile += %w( reports/stores.js reports/reports.js reports.css home.css users.css )
+  
+  #Language
+  config.i18n.default_locale = :es
+  config.i18n.locale = :es
 
 end

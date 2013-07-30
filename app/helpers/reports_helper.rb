@@ -8,16 +8,16 @@ module ReportsHelper
 		header
 	end
 
-	def tbody(rows, colums)
+	def tbody(rows, columns)
 		rows_body = ""
 		if rows.length < 1      
         	rows_body += "<tr>"	
-          	rows_body += "<td colspan='" + colums.length.to_s + "'>" + I18n.t('reports.no_results') + "</td>"
+          	rows_body += "<td colspan='" + columns.length.to_s + "'>" + I18n.t('reports.no_results') + "</td>"
         	rows_body += "</tr>"
        	else
 			rows.each do |row|
 				rows_body += "<tr>" 
-				colums.each do |column|
+				columns.each do |column|
 					rows_body += "<td>" + row[column.to_s].to_s + "</td>"
 				end
 				rows_body += "</tr>" 

@@ -39,10 +39,10 @@ class ReportsController < ApplicationController
   end
 
   def report1
-    @rows, @colums = {}, []
+    @rows, @columns = {}, []
     begin
       @thead = I18n.t('reports.report1.thead').split(",")
-      @colums = QUERIES['report1_colums'].split(",")
+      @columns = QUERIES['report1_columns'].split(",")
       @report_name = "report1"
       @current = 1
       @total = 0.0  
@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
       @stores = params[:stores]
       client = TinyTds::Client.new(:username => 'TrueVUE_SA', :password => 'TrueVUE_SA', :dataserver => 'localhost\MSSQLSERVER', :database => 'VUE_DM')
       query_report1 = QUERIES['report1'].gsub("%_DATE_%", @date).gsub("%_DATE_END_%", @date_end).gsub("%_STORES_%", @stores)
-      query = QUERIES['query'].gsub("%_QUERY_%", query_report1).gsub("%_COLUMS_%", QUERIES['report1_colums']) + QUERIES['report1_order_by'].gsub("%_COLUMS_%", QUERIES['report1_colums'])
+      query = QUERIES['query'].gsub("%_QUERY_%", query_report1).gsub("%_COLUMNS_%", QUERIES['report1_columns']) + QUERIES['report1_order_by'].gsub("%_COLUMNS_%", QUERIES['report1_columns'])
       result = client.execute(query)  
       #logger.info "QUERY " + query.to_s
       i = 0
@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
       result.each do |rowset|
         #logger.info "TEMP " + temp[rowset["HIERARCHYNAME"].to_s + rowset["HIERARCHYDATADATE"].to_s].to_s
         
-        @colums.each do |column|
+        @columns.each do |column|
           value = ""
           if column.include? "COUNT"  
                 value = replace_nil(rowset[column.to_s], "0")
@@ -98,7 +98,7 @@ class ReportsController < ApplicationController
       end
       logger.info "total_rows " + i.to_s
       @total = (i /  QUERIES['rows'].to_f).ceil
-      #logger.info @colums.inspect
+      #logger.info @columns.inspect
     rescue Exception => e
       logger.info "Error en report1 " + e.message
       logger.error $!.backtrace 
@@ -108,19 +108,19 @@ class ReportsController < ApplicationController
 
   def report_query
     rows = []
-    thead, colums = [], []
+    thead, columns = [], []
     total = params[:total]
     page = params[:page].nil? ? 1 : params[:page].to_i
     begin
       rows = JSON.parse(params[:rows])
-      colums = QUERIES[params[:report] + "_colums"]
+      columns = QUERIES[params[:report] + "_columns"]
       thead = I18n.t('reports.' + params[:report] + '.thead').split(",")
     rescue Exception => e
       logger.info "Error en report_query " + e.message
       logger.error $!.backtrace 
     end
     respond_with do |format|
-      format.html { render :partial => "reports/table", :locals => { :rows => rows, :thead => thead, :total => total, :current => page, :colums => colums.split(",") } and return }
+      format.html { render :partial => "reports/table", :locals => { :rows => rows, :thead => thead, :total => total, :current => page, :columns => columns.split(",") } and return }
       format.json { render :json => @rows.to_json }
     end
   end
